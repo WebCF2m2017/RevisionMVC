@@ -1,0 +1,14 @@
+{
+    "name": "michael/mvc",
+    "require": {
+        "twbs/bootstrap": "^3.3",
+        "components/jquery": "^3.2",
+        "twig/twig": "^2.4"
+    },
+    "authors": [
+        {
+            "name": "Pitz Michaël",
+            "email": "michaeljpitz@gmail.com"
+        }
+    ]
+}

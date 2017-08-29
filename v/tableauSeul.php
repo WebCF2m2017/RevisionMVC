@@ -3,6 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <title>Le tableau</title>
+        <?php
+        require_once 'v/bootstrap.php';
+        ?>
     </head>
     <body>
         <h1>Le tableau</h1>

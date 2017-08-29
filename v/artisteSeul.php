@@ -3,6 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <title>L'artiste</title>
+        <?php
+        require_once 'v/bootstrap.php';
+        ?>
     </head>
     <body>
         <?php

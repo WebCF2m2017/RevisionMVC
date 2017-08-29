@@ -3,6 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <title>Admin : Les tableaux</title>
+        <?php
+        require_once 'v/bootstrap.php';
+        ?>
     </head>
     <body>
         <h1>Admin : Les tableaux</h1>
