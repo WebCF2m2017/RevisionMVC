@@ -35,18 +35,27 @@ if (isset($_GET['deco'])) {
     echo $twig->render("insert.html.twig",array("listeArtistes"=>$artistes));
     }else{
         $tableau = new Tableau($_POST);
-        var_dump ($tableau);
-        /*
-         * 
-         * on est ICI
-         * 
-         * 
-         */
-        
-        
-        $manageTableau->insertTab($tableau);
+        // var_dump ($tableau);
+        // insertion dans la db
+        $insert = $manageTableau->insertTab($tableau);
+        // si l'insertion est réussie
+        if($insert){
+            // redirection vers l'accueil
+            header("Location: ./");
+        }else{
+            // erreur et lien de redirection
+            echo "<h3 onclick='history.go(-1)'>Erreur lors de l'insertion, vérifiez tous les champs!<br/><button>Complétez le formulaire</button></h3>";
+        }
     }
-    
+    // si on veut supprimer
+}elseif(isset($_GET['del'])&& ctype_digit($_GET['del'])){
+    $delete = $manageTableau->deletetab($_GET['del']);
+    if($delete){
+        // redirection vers l'accueil
+        header("Location: ./");
+    }else{
+        echo "not succesfull";
+    }
 }else{
     $recupTous = $manageTableau->selectAll();
 

@@ -1,9 +1,0 @@
-{# enfant de base #}
-{% extends "base.html.twig" %}
-
-{%block title %}{{parent()}}- insérer dans{% endblock title %}
-
-{# on écrase le corps du (ou des) parent#}
-{% block corps %}
-            <a href="./">retour au parent</a>
-{% endblock corps %}
