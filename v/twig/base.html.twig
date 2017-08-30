@@ -7,6 +7,17 @@
             <meta charset="UTF-8">
             <title>{% block title %}Admin{% endblock title%}</title>
             <script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script><link rel="stylesheet" href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css"/>
+            {% block monscript %}
+                <script>
+                    // pour delete
+                function sup(id){
+                    var a = confirm("Voulez-vous supprimer cette image?");
+                    if(a){
+                        document.location.href="?del="+id;
+                    }
+                }
+                </script>
+            {% endblock monscript %}
         </head>
     {% endblock head %}
     <body>
@@ -17,9 +28,10 @@
             {% block corps %}
                 {%for item in affiche%}
                     {# dump(affiche, item) #}
-                    <h2><a href="?idtab={{item.getId()}}">{{item.getTitre()}}</a></h2>
-                    <div><img src="v/img/icon_edit.png" alt=""/> <img src="v/img/delete_doc.jpg" alt=""/></div>
-                    <h3>Par <a href="?idartiste={{item.getArtiste_idArtiste()}}">{{item.getLenom()}} {{item.getLeprenom()}}</a></h3>
+                    <h2>{{item.getTitre()}}</h2>
+                    <img src="{{item.getImage()}}" alt="{{item.getTitre()}}" width="60" height="60" />
+                    <div><img src="v/img/icon_edit.png" alt=""/> <img src="v/img/delete_doc.jpg" onclick="sup({{item.getId()}});" alt=""/></div>
+                    <h3>Par {{item.getLenom()}} {{item.getLeprenom()}}</h3>
                     <p>En {{ item.getCreation()|date("Y")}}</p>
                     <hr/>
                     <?php

@@ -47,7 +47,15 @@ if (isset($_GET['deco'])) {
             echo "<h3 onclick='history.go(-1)'>Erreur lors de l'insertion, vérifiez tous les champs!<br/><button>Complétez le formulaire</button></h3>";
         }
     }
-    
+    // si on veut supprimer
+}elseif(isset($_GET['del'])&& ctype_digit($_GET['del'])){
+    $delete = $manageTableau->deletetab($_GET['del']);
+    if($delete){
+        // redirection vers l'accueil
+        header("Location: ./");
+    }else{
+        echo "not succesfull";
+    }
 }else{
     $recupTous = $manageTableau->selectAll();
 
