@@ -67,7 +67,16 @@ class Tableau {
     }
 
     public function setImage($image) {
-        $this->image = $image;
+        // extensions permises
+        $permission = [".jpg","jpeg",".gif",".png"];
+        // on la récupère de l'url envoyée et on la met en minuscule
+        $der4 = strtolower(substr($image,-4));
+        // si c'est une extension permise
+        if(in_array($der4, $permission)){
+            $this->image = $image;
+        }else{
+            $this->image = "https://domainedesforges.net/wp-content/themes/domainedesforges/img/facebook-forges.png";
+        }
     }
 
     public function setCreation($creation) {

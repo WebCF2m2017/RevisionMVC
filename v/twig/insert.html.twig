@@ -9,7 +9,7 @@
     <form action='' method='POST' name='e'>
         <input type="text" name="titre" placeholder="titre" required /><br/>
         <input type="text" name="image"  placeholder="url de l'image"required /><br/>
-        <input type="date" name="creation" ><br/>
+        <input type="date" name="creation" value="2000-01-01" reqired ><br/>
         <select name='artiste_idArtiste'>
             {% for a in listeArtistes %}
                 <option value='{{a.idArtiste}}'>{{a.lenom}}</option>

@@ -54,6 +54,10 @@ class TableauManager {
         $prepare->bindValue(3, $a->getCreation(), PDO::PARAM_STR);
         $prepare->bindValue(4, $a->getArtiste_idArtiste(), PDO::PARAM_INT);
         $prepare->execute();
-        
+        if($prepare->rowCount()){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
