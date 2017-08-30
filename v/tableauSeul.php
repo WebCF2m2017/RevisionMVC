@@ -3,8 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <title>Le tableau</title>
+        
     </head>
-    <body>
+    <body><div class="container">
         <h1>Le tableau</h1>
         <div><?php require_once 'v/formAccueil.php'; ?></div>
         <?php
@@ -15,6 +16,6 @@
         <h3>Par <a href="?idartiste=<?=$obj->getArtiste_idArtiste()?>"><?=$obj->getLenom()?> <?=$obj->getLeprenom()?></a></h3>
         <p>En <?=date("Y",strtotime($obj->getCreation()))?></p>
         <h4><a href="./">Retour à l'accueil</a></h4>
-        
+        </div>
     </body>
 </html>

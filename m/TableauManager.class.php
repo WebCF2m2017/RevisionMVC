@@ -44,6 +44,16 @@ class TableauManager {
             return $req->fetch(PDO::FETCH_ASSOC);
         }else{
             return false;
-        }
+        }  
+    }
+    public function insertTab(Tableau $a){
+        $sql = "INSERT INTO tableau (titre,image,creation,artiste_idArtiste) VALUE (?,?,?,?)";
+        $prepare = $this->db->prepare($sql);
+        $prepare->bindValue(1, $a->getTitre(), PDO::PARAM_STR);
+        $prepare->bindValue(2, $a->getImage(), PDO::PARAM_STR);
+        $prepare->bindValue(3, $a->getCreation(), PDO::PARAM_STR);
+        $prepare->bindValue(4, $a->getArtiste_idArtiste(), PDO::PARAM_INT);
+        $prepare->execute();
+        
     }
 }

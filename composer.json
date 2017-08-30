@@ -1,0 +1,15 @@
+{
+    "name": "webform/08-revision",
+    "description": "mes paquets",
+    "type": "view",
+    "require": {
+        "twbs/bootstrap": "^3.3",
+        "twig/twig": "2.4.*"
+    },
+    "authors": [
+        {
+            "name": "michaeljpitz",
+            "email": "michaeljpitz@gmail.com"
+        }
+    ]
+}

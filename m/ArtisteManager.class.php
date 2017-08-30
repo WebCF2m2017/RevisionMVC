@@ -29,5 +29,13 @@ GROUP_CONCAT(t.image SEPARATOR '|@@|') AS image
         $req->execute();
         return $req->fetch(PDO::FETCH_ASSOC);
     }
-
+    
+    public function listeArtiste() {
+        $sql = "SELECT a.*   
+                    FROM artiste a
+                    ORDER BY a.idArtiste DESC;
+            ";
+        $req1 = $this->db->query($sql);
+        return $req1->fetchAll(PDO::FETCH_ASSOC);
+}
 }

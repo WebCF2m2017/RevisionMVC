@@ -1,0 +1,22 @@
+{# enfant de base #}
+{% extends "base.html.twig" %}
+
+{%block title %}{{parent()}} - Nouveau tableau{% endblock title %}
+{%block titre %}{{parent()}} - Insérez un nouveau tableau{% endblock titre %}
+
+{# on écrase le corps du (ou des) parent#}
+{% block corps %}
+    <form action='' method='POST' name='e'>
+        <input type="text" name="titre" placeholder="titre" required /><br/>
+        <input type="text" name="image"  placeholder="url de l'image"required /><br/>
+        <input type="date" name="creation" ><br/>
+        <select name='artiste_idArtiste'>
+            {% for a in listeArtistes %}
+                <option value='{{a.idArtiste}}'>{{a.lenom}}</option>
+            {%endfor%}
+      
+        </select><br/>
+            <input type="submit" value="envoyé">
+    </form>
+           
+{% endblock corps %}
