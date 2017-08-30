@@ -1,0 +1,32 @@
+{# Ceci est un commentaire en twig#}
+<!DOCTYPE html>
+<html>
+    {# Ceci est bloc dont le contenu peut être hérité #}
+    {% block head %}
+        <head>
+            <meta charset="UTF-8">
+            <title>{% block title %}Admin{% endblock title%}</title>
+            <script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script><link rel="stylesheet" href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css"/>
+        </head>
+    {% endblock head %}
+    <body>
+        <div class='container'>
+            <h1>{% block titre %}Admin{% endblock titre %}</h1>
+            <div><a href="?insert=tab">Ajouter un tableau</a></div>
+                <h2 align='right'><a href="?deco">Déconnexion</a></h2>
+            {% block corps %}
+                {%for item in affiche%}
+                    {# dump(affiche, item) #}
+                    <h2><a href="?idtab={{item.getId()}}">{{item.getTitre()}}</a></h2>
+                    <div><img src="v/img/icon_edit.png" alt=""/> <img src="v/img/delete_doc.jpg" alt=""/></div>
+                    <h3>Par <a href="?idartiste={{item.getArtiste_idArtiste()}}">{{item.getLenom()}} {{item.getLeprenom()}}</a></h3>
+                    <p>En {{ item.getCreation()|date("Y")}}</p>
+                    <hr/>
+                    <?php
+                    }
+                    ?> 
+                {%endfor%}
+            {% endblock corps %}
+        </div>
+    </body>
+</html>

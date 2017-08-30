@@ -10,6 +10,8 @@ session_start();
 // dépendances
 require_once 'config.php';
 require_once 'm/myPDO.php';
+// chargement des bibliothèques externes (chargées par composer)
+require_once 'vendor/autoload.php';
 
 // connexion
 $connect = new myPDO("mysql:host=".DB_HOST.";dbname=".DB_NAME.";charset=".DB_CHARSET.";port=".DB_PORT, DB_LOGIN, DB_PWD);

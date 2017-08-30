@@ -3,6 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <title>Admin : Les tableaux</title>
+        <script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css"/>
     </head>
     <body>
         <h1>Admin : Les tableaux</h1>
