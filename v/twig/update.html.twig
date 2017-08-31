@@ -10,6 +10,7 @@
         <input type="text" name="titre" placeholder="titre" value='{{tab.getTitre}}' required /><br/>
         <input type="text" name="image" value='{{tab.getImage}}'  placeholder="url de l'image"required /><br/>
         <input type="date" name="creation" value="{{tab.getCreation}}" reqired ><br/>
+        <input type="hidden" name="id" value="{{tab.getId}}" reqired >
         <select name='artiste_idArtiste'>
             
             {% for a in listeArtistes %}

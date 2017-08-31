@@ -54,8 +54,17 @@ if (isset($_GET['deco'])) {
     // si on a envoyé le formulaire
     if(!empty($_POST)){
         // si on a pas chipoté l'id
-        if($_GET['updatetab']==$_SESSION['pourUpdateTab']){
-            
+        if($_POST['id']==$_SESSION['pourUpdateTab']){
+            // création d'un objet de type tableau
+            $tabobj = new Tableau($_POST);
+            // mise à jour du tableau
+            $modifie = $manageTableau->updateTab($tabobj);
+            // si la modification est bonne
+            if($modifie){
+                header("Location: ./");
+            }else{
+                echo "<h3 onclick='history.go(-1)'>Erreur lors de la modification, vérifiez tous les champs!<br/><button>Complétez le formulaire</button></h3>";
+            }
         }
     
     // sinon affiche le formulaire    
@@ -66,10 +75,14 @@ if (isset($_GET['deco'])) {
         $artistes = $manageArtiste->listeArtiste();
         // on récupère les champs du tableau
         $tableau = $manageTableau->selectUn($_GET['updatetab']);
+        if(!$tableau){
+            echo "<h3 onclick='history.go(-1)'>Ce tableau n'existe plus<br/><button>Retour en arrière</button></h3>";
+        }else{
         // on transforme la réponse en objet tableau
         $tab = new Tableau($tableau);
         // Appel de la vue
         echo $twig->render("update.html.twig",array("listeArtistes"=>$artistes, "tab"=>$tab));
+        }
     }
     
     
