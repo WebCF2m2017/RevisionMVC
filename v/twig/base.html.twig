@@ -6,7 +6,9 @@
         <head>
             <meta charset="UTF-8">
             <title>{% block title %}Admin{% endblock title%}</title>
-            <script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script><link rel="stylesheet" href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css"/>
+            <script src="vendor/components/jquery/jquery.min.js"></script>
+            <script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+            <link rel="stylesheet" href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css"/>
             {% block monscript %}
                 <script>
                     // pour delete
@@ -30,7 +32,7 @@
                     {# dump(affiche, item) #}
                     <h2>{{item.getTitre()}}</h2>
                     <img src="{{item.getImage()}}" alt="{{item.getTitre()}}" width="60" height="60" />
-                    <div><img src="v/img/icon_edit.png" alt=""/> <img src="v/img/delete_doc.jpg" onclick="sup({{item.getId()}});" alt=""/></div>
+                    <div><a href='?updatetab={{item.getId()}}'><img src="v/img/icon_edit.png" alt=""/></a> <img src="v/img/delete_doc.jpg" onclick="sup({{item.getId()}});" alt=""/></div>
                     <h3>Par {{item.getLenom()}} {{item.getLeprenom()}}</h3>
                     <p>En {{ item.getCreation()|date("Y")}}</p>
                     <hr/>

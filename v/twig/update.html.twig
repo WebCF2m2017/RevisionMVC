@@ -1,0 +1,30 @@
+{# enfant de base #}
+{% extends "base.html.twig" %}
+
+{%block title %}{{parent()}} - Modifier le tableau ???{% endblock title %}
+{%block titre %}{{parent()}} - Modifier le tableau ???{% endblock titre %}
+{% block monscript %}{% endblock monscript %}
+{# on écrase le corps du (ou des) parent#}
+{% block corps %}
+    <form action='' method='POST' name='e'>
+        <input type="text" name="titre" placeholder="titre" value='{{tab.getTitre}}' required /><br/>
+        <input type="text" name="image" value='{{tab.getImage}}'  placeholder="url de l'image"required /><br/>
+        <input type="date" name="creation" value="{{tab.getCreation}}" reqired ><br/>
+        <select name='artiste_idArtiste'>
+            
+            {% for a in listeArtistes %}
+                {% if a.idArtiste == tab.getArtiste_idArtiste%}
+                    {% set selected = "selected"%}
+                    {% else %}
+                        {# création d'une variable string vide#}
+                        {% set selected = ""%}
+                {% endif%}
+                <option value='{{a.idArtiste}}' {{selected}}>{{a.lenom}}</option>
+            {%endfor%}
+      
+        </select><br/>
+            <input type="submit" value="modifier"><br/>
+            <a href="./">retour à l'accueil</a>
+    </form>
+        {#dump(tab)#}   
+{% endblock corps %}
