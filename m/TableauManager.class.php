@@ -73,4 +73,22 @@ class TableauManager {
             return false;
         }
     }
+    // pour update
+    public function updateTab(Tableau $tab) {
+        // requête
+        $sql="UPDATE tableau SET titre=?, image=?, creation=?, artiste_idArtiste=? WHERE id=?";
+        $req = $this->db->prepare($sql);
+        $req->bindValue(1, $tab->getTitre(),PDO::PARAM_STR);
+        $req->bindValue(2, $tab->getImage(),PDO::PARAM_STR);
+        $req->bindValue(3, $tab->getCreation(),PDO::PARAM_STR);
+        $req->bindValue(4, $tab->getArtiste_idArtiste(),PDO::PARAM_INT);
+        $req->bindValue(5, $tab->getId(),PDO::PARAM_INT);
+        $req->execute();
+        // si modification ok
+        if($req->rowCount()){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
