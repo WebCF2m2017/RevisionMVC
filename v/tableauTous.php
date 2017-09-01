@@ -16,6 +16,22 @@
         <hr/>
         <?php
         }
+        /*// affichage constante
+        echo Pagination::TITRE."<br/>";
+        // affichage méthode statique publique
+        $a = Pagination::affiche(2,1,VAR_GET,NB_PG); // affiche page 4
+        echo $a;
+        echo "<hr/>---<hr/>";
+        $b = Pagination::affiche(100,$pageActu); // simulation grand nombre de page
+        echo $b;
+        echo "<hr/>---<hr/>";*/
+        $c = Pagination::affiche($nb_tot,$pageActu,"pg",NB_PG);
+        echo $c;
+        /*
+        echo "<hr/>---<hr/>";
+        echo $nb_tot;
+         * 
+         */
         ?>
     </body>
 </html>

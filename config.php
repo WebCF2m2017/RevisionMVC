@@ -17,3 +17,10 @@ define("DB_PORT", 3306);
 
 define("USER", "admin");
 define("PWD", "1234");
+
+/*
+ * Pour la pagination
+ */
+
+define("NB_PG",5);
+define("VAR_GET","pg");
