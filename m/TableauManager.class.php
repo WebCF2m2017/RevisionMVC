@@ -14,12 +14,18 @@ class TableauManager {
         $this->db = $connection;
     }
 
-    public function selectAll(){
+    public function selectAll($parPage=NULL,$page_actu=1){
+        if(is_null($parPage)){
+            $strLimit="";
+        }else{
+            $debutLimit = ($page_actu-1)*$parPage;
+            $strLimit="LIMIT $debutLimit,$parPage";
+        }
         $sql = "SELECT t.*, a.lenom, a.leprenom 
                 FROM tableau t
                     INNER JOIN artiste a 
                     ON a.idArtiste = t.artiste_idArtiste
-                ORDER BY t.creation DESC";
+                ORDER BY t.creation DESC $strLimit";
         $req = $this->db->query($sql);
 
         if($req->rowCount()){
@@ -28,6 +34,13 @@ class TableauManager {
             return false;
         }
     }
+    // pour compter le nombre total de tableaux
+    public function nombreTotalTableau(){
+        $req = $this->db->query("SELECT COUNT(*) AS nb FROM tableau");
+        $sortie = $req->fetch(PDO::FETCH_OBJ);
+        return $sortie->nb;
+    }
+    
     public function selectUn($id){
         $id = (int)$id;
         $sql = "SELECT t.*, a.lenom, a.leprenom 

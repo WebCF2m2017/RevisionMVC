@@ -6,6 +6,7 @@ require_once 'm/Tableau.class.php';
 require_once 'm/TableauManager.class.php';
 require_once 'm/Artiste.class.php';
 require_once 'm/ArtisteManager.class.php';
+require_once 'm/Pagination.class.php';
 
 $manageArtiste = new ArtisteManager($connect);
 $manageTableau = new TableauManager($connect);
@@ -97,14 +98,26 @@ if (isset($_GET['deco'])) {
         echo "not succesfull";
     }
 }else{
-    $recupTous = $manageTableau->selectAll();
+    
+    if(isset($_GET[VAR_GET])&& ctype_digit($_GET[VAR_GET])){
+        $pageActu = $_GET[VAR_GET];
+    }else{
+        $pageActu = 1;
+    }
+    
+    $nb_tot = $manageTableau->nombreTotalTableau();
+
+    $recupTous = $manageTableau->selectAll(NB_PG,$pageActu);
+    
+    // $recupTous = $manageTableau->selectAll();
+    $pagination = Pagination::affiche($nb_tot,$pageActu,"pg",NB_PG);
 
     if ($recupTous) {
         foreach ($recupTous as $key => $value) {
             $obj[] = new Tableau($value);
         }
         // Appel de la vue
-    echo $twig->render("base.html.twig",array('affiche' => $obj));
+    echo $twig->render("base.html.twig",array('affiche' => $obj,"pagi"=>$pagination));
     } else {
         echo "soucis !";
     }

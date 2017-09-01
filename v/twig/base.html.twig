@@ -36,10 +36,9 @@
                     <h3>Par {{item.getLenom()}} {{item.getLeprenom()}}</h3>
                     <p>En {{ item.getCreation()|date("Y")}}</p>
                     <hr/>
-                    <?php
-                    }
-                    ?> 
+                    
                 {%endfor%}
+                {{pagi|raw}}
             {% endblock corps %}
         </div>
     </body>
